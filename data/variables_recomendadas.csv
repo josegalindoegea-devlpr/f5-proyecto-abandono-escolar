@@ -1,0 +1,10 @@
+Variable,Tipo, Impacto_esperado
+distancia_escuela, numerica, mayor distancia -> mas abandono
+acceso_internet, binaria, sin internet -> mayor riesgo
+nivel_socioeconomico, ordinal, bajo NSE -> mayor vulnerabilidad
+promedio_notas, numerica, bajo rendimiento -> mayor riesgo
+asistencia, numerica, baja asistencia -> alerta fuerte
+apoyo_familiar, binaria, poco apoyo -> mayor abandono
+trabaja, binaria, trabajo infantil/adolescente
+abandono, target, valor 0 o 1
+

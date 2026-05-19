@@ -1,0 +1,317 @@
+Desarrolla un programa profesional en Python para generar datasets sintéticos destinados al entrenamiento de modelos de Inteligencia Artificial orientados a la detección de “abandono escolar”.
+
+El programa debe estar completamente documentado, estructurado y optimizado para escalabilidad, mantenibilidad y calidad de datos.
+
+Objetivo
+
+Generar un dataset sintético coherente y realista en formato CSV que permita entrenar modelos de clasificación supervisada para detectar abandono escolar.
+
+El dataset debe incluir:
+
+variables académicas
+administrativas
+temporales
+socioeducativas
+demográficas
+una variable objetivo (abandono_escolar)
+
+La generación no debe ser completamente aleatoria, sino basada en reglas y correlaciones realistas entre variables.
+
+Requisitos técnicos generales
+Lenguaje
+
+Python 3.11+ compatible.
+
+Librerías permitidas
+
+Utilizar preferentemente:
+
+pandas
+numpy
+pathlib
+logging
+random
+typing
+dataclasses (opcional)
+
+Evitar dependencias innecesarias.
+
+Requisitos funcionales
+Entrada por teclado
+
+El programa solicitará:
+
+1. Número máximo de registros
+entero positivo
+configurable por usuario
+2. Ruta de almacenamiento
+validar existencia
+crear directorio si no existe
+3. Nombre del archivo CSV
+añadir .csv automáticamente si falta
+4. Seed opcional
+para reproducibilidad
+5. Porcentaje aproximado de abandono esperado
+opcional
+por defecto 15%
+Formato de salida
+Dataset
+
+Archivo:
+
+.csv
+
+Separador:
+
+,
+
+Encoding:
+
+utf-8
+Variables del dataset
+Académicas
+Variable	Tipo	Restricciones
+asistencia_pct	decimal	0.0 – 100.0
+nota_media	decimal nullable	0.0 – 10.0
+materias_suspensas	entero	0 – 10
+numero_materias_curso	entero	10 – 14
+evaluaciones_realizadas	entero	0 – 4
+partes_disciplinarios	entero	0 – 10
+Administrativas
+Variable	Tipo
+matricula_activa	booleano (0/1)
+oferta_educativa	entero
+Repetidor_curso_actual	booleano (0/1)
+oferta_educativa
+1 → ESO
+2 → Bachillerato
+3 → FP Básica
+4 → FP Grado Medio
+Temporales
+Variable	Tipo	Restricciones
+dias_sin_actividad	entero	1 – 65
+inasistencias_consecutivas	entero	1 – 65
+Demográficas
+Variable	Tipo
+grado_urbanizacion	entero
+grado_urbanizacion
+1 → Rural
+2 → Semiurbano
+3 → Urbano
+Socioeducativas
+Variable	Tipo	Restricciones
+distancia_escuela	decimal	1 – 50
+acceso_internet	booleano	
+nivel_socioeconomico	entero	1 – 6
+apoyo_familiar	booleano	
+trabaja	booleano	
+nivel_socioeconomico
+1 → Alta
+2 → Media Alta
+3 → Media
+4 → Media Baja
+5 → Baja Alta
+6 → Baja Baja
+Variable objetivo
+Variable	Tipo
+abandono_escolar	booleano (0/1)
+Reglas del modelo de abandono
+
+La variable abandono_escolar será igual a 1 si se cumple cualquiera de las siguientes reglas:
+
+R1 – Abandono administrativo
+matricula_activa == 0
+R2 – Inactividad crítica
+dias_sin_actividad >= 60
+AND asistencia_pct < 20
+R3 – Desvinculación académica severa
+evaluaciones_realizadas == 0
+AND asistencia_pct < 30
+AND (
+    nota_media is null
+    OR nota_media < 3
+)
+Reglas de coherencia del dataset
+
+El generador debe crear relaciones realistas entre variables.
+
+Coherencias obligatorias
+1. Baja asistencia
+
+Si:
+
+asistencia_pct < 30
+
+Entonces aumentar probabilidad de:
+
+suspensos altos
+baja nota
+inactividad
+inasistencias consecutivas
+2. Sin evaluaciones
+
+Si:
+
+evaluaciones_realizadas == 0
+
+Entonces:
+
+nota_media debe ser frecuentemente NaN
+3. Matrícula inactiva
+
+Si:
+
+matricula_activa == 0
+
+Entonces incrementar probabilidad de:
+
+asistencia baja
+actividad mínima
+abandono
+4. Repetidor
+
+Si:
+
+Repetidor_curso_actual == 1
+
+Entonces incrementar probabilidad de:
+
+suspensos
+bajo rendimiento
+abandono
+5. Vulnerabilidad social
+
+Combinar:
+
+nivel socioeconómico bajo
+trabaja == 1
+sin apoyo familiar
+sin internet
+
+Para aumentar riesgo académico.
+
+Distribuciones estadísticas
+
+Evitar generación completamente uniforme.
+
+Usar distribuciones más realistas:
+
+normales truncadas
+probabilísticas
+sesgadas hacia rangos comunes
+
+Ejemplo:
+
+mayoría de asistencia entre 70–100
+notas centradas entre 4–8
+pocos casos extremos
+Validaciones obligatorias
+
+Validar:
+
+rangos numéricos
+tipos de datos
+columnas obligatorias
+rutas
+permisos de escritura
+Documentación automática
+
+El programa debe generar automáticamente:
+
+1. README.txt
+
+Debe incluir:
+
+objetivo del dataset
+fecha de generación
+número de registros
+descripción general
+reglas de abandono
+distribución de abandono
+instrucciones de uso
+2. Diccionario de datos
+
+Archivo:
+
+diccionario_datos.csv
+
+Debe contener:
+
+nombre variable
+tipo
+descripción
+rango permitido
+valores categóricos
+3. Estadísticas descriptivas
+
+Archivo:
+
+estadisticas_dataset.csv
+
+Debe incluir:
+
+medias
+desviaciones
+mínimos
+máximos
+distribución de clases
+porcentajes de nulos
+Logging
+
+Implementar logging profesional:
+
+Mostrar:
+inicio proceso
+validaciones
+progreso
+resumen final
+errores controlados
+Calidad del código
+
+El código debe:
+
+seguir PEP8
+incluir type hints
+incluir docstrings
+estar modularizado
+usar funciones reutilizables
+tener manejo de excepciones
+estar preparado para ampliaciones futuras
+Estructura esperada del código
+
+Se recomienda incluir:
+
+main()
+configuración()
+generación_variables()
+motor_reglas_abandono()
+validaciones()
+exportación_csv()
+generar_readme()
+generar_diccionario()
+generar_estadisticas()
+Output esperado
+
+Generar:
+
+Código Python completo y ejecutable
+Comentarios detallados
+Explicación breve de arquitectura
+Ejemplo de ejecución
+Estructura final de archivos generados
+Requisito adicional importante
+
+El dataset generado debe ser útil para:
+
+Machine Learning supervisado
+clasificación binaria
+análisis exploratorio
+feature engineering
+pruebas de pipelines de IA
+
+Evitar:
+
+datos totalmente aleatorios
+patrones incoherentes
+combinaciones imposibles
+distribuciones irreales.

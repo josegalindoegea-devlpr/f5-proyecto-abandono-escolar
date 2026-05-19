@@ -42,10 +42,20 @@ Las principales variables utilizadas son:
 | distancia_escuela | Distancia entre casa y escuela |
 | acceso_internet | Disponibilidad de internet |
 | nivel_socioeconomico | Nivel económico familiar |
-| promedio_notas | Rendimiento académico |
-| asistencia | Porcentaje de asistencia |
+| nota_media | Rendimiento académico |
+| asistencia_pct | Porcentaje de asistencia |
 | apoyo_familiar | Apoyo académico y emocional |
 | trabaja | Si el estudiante trabaja |
+| materias_suspensas | asignaturas no aprobadas |
+| numero_materias_curso | asignaturas totales del curso |
+| evaluaciones_realizadas | total evaluaciones hechas al alumno |
+| partes_disciplinarios | total de amonestaciones durante el curso |
+| matricula_activa | indicador de que está matriculado en curso |
+| oferta_educativa | diferentes tramos educativos |
+| repetidor_curso_actual | indicador si repite el curso |
+| dias_sin_actividad | total dias sin registro educativo |
+| inasistencias_consecutivas | número de faltas seguidas |
+| grado_urbanizacion | rango de urbanización aplicable |ø
 | abandono | Variable objetivo |
 
 ---
@@ -66,20 +76,27 @@ Las principales variables utilizadas son:
 ```text
 proyecto_abandono_escolar/
 │
-├── data/
-│   └── estudiantes.csv
+├─ data/
+│   └─ estudiantes.csv
+|
+├─datasets/
+│   └─abandono.csv
 │
 ├── notebooks/
 │   └── analisis.ipynb
 │
 ├── src/
-│   ├── preprocessing.py
+│   ├─preprocessing.py
 │   ├── model.py
-│   └── visualization.py
+│  └── visualization.py
 │
 ├── outputs/
 │   ├── matriz_confusion.png
 │   └── reporte_modelo.txt
+│
+├─docs/
+│
+├─ prompts/
 │
 ├── requirements.txt
 └── README.md

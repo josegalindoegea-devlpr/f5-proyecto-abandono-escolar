@@ -416,6 +416,102 @@ Baja
 - Visualizaciones dinámicas
 - Métricas actualizadas
 
+## HU-17 — Generar Etiquetas de Abandono Escolar
+
+### Historia
+
+Como científico de datos,
+quiero generar automáticamente la variable abandono_escolar,
+para construir un ground truth consistente y reproducible.
+
+### Prioridad
+
+Alta
+
+### Criterios de aceptación
+
+- Implementación de reglas R1, R2 y R3
+- Etiquetas binarias válidas
+- Gestión de edge cases
+- Validación de coherencia
+- Reproducibilidad del etiquetado
+
+## HU-18 — Calcular RiskIndex
+
+### Historia
+
+Como institución educativa,
+quiero calcular un índice continuo de riesgo,
+para priorizar intervenciones preventivas.
+
+### Prioridad
+
+Alta
+
+### Criterios de aceptación
+
+- Variables normalizadas en [0,1]
+- Fórmula ponderada implementada
+- Resultado acotado en [0,1]
+- Clasificación Bajo/Medio/Alto/Crítico
+- Sin inconsistencias matemáticas
+
+## HU-19 — Generar Variables de Riesgo
+
+### Historia
+
+Como científico de datos,
+quiero transformar variables educativas en métricas normalizadas de riesgo,
+para homogenizar el cálculo del índice de abandono.
+
+### Prioridad
+
+Alta
+
+### Criterios de aceptación
+
+- Variables normalizadas en [0,1]
+- Dirección semántica coherente
+- Validación matemática
+- Variables derivadas generadas correctamente
+
+## HU-20 — Gestionar Missing Values
+
+### Historia
+
+Como científico de datos,
+quiero aplicar políticas diferenciadas de imputación,
+para preservar la calidad estadística del dataset.
+
+### Prioridad
+
+Alta
+
+### Criterios de aceptación
+
+- Imputación por mediana
+- Gestión diferenciada por tipo
+- Exclusión de registros inválidos
+- Variables auxiliares missing generadas
+
+## HU-21 — Prevenir Data Leakage
+
+### Historia
+
+Como científico de datos,
+quiero evitar fugas de información entre entrenamiento y prueba,
+para garantizar evaluaciones realistas del modelo.
+
+### Prioridad
+
+Alta
+
+### Criterios de aceptación
+
+- Split antes de fit
+- Escalado solo con train
+- Imputación solo con train
+- Pipeline reproducible
 ---
 
 # Product Backlog Priorizado

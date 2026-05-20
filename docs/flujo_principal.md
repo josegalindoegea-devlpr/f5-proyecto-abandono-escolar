@@ -17,28 +17,55 @@ Inicio
 Carga del Dataset
    │
    ▼
-Limpieza y Preparación de Datos
+# Fase de Validacion, limpieza y preparación de datos.
    │
    ▼
-Selección de Variables
+Validación estructural
    │
    ▼
-División de Datos (Train/Test)
+Tipado y limpieza
    │
    ▼
-Escalado de Variables
+Gestión de missing values
+   │
+   ▼   
+Ground Truth (abandono_escolar)
+   │
+   ▼
+# Fase de Preparación de datos
+   │
+   ▼
+Ingeniería de variables
+   │
+   ▼
+Calculo RiskIndex
+   │
+   ▼
+Transformación ML
+   │
+   ▼
+# Fase de División de Datos (Train/Test) y entrenamiento
+   │
+   ▼
+Division de datos
+   │
+   ▼
+Adecuación y Escalado de Variables
    │
    ▼
 Entrenamiento del Modelo
    │
    ▼
-Predicción
+# Fase de Predicción
    │
    ▼
 Evaluación del Modelo
    │
    ▼
 Generación de Matriz de Confusión
+   │
+   ▼
+Visualización
    │
    ▼
 Análisis de Resultados
@@ -48,4 +75,5 @@ Identificación de Estudiantes en Riesgo
    │
    ▼
 Fin
-
+```
+---

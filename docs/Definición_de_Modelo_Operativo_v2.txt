@@ -1,0 +1,266 @@
+Definición de Modelo Operativo
+Definición operativa de “abandono escolar”
+En este sistema, se define abandono escolar como:
+Estudiante que interrumpe su trayectoria educativa durante el curso académico sin actividad académica verificable durante un periodo prolongado.
+Variables necesarias
+Para poder construir la etiqueta “y” el dataset debe incluir:
+Académicas:
+	asistencia_pct: entero, porcentaje de asistencia
+	nota_media:  entero, promedio de calificaciones
+	materias_suspensas: entero, numero de asignaturas no aprobadas
+	numero_materias_curso: entero, número de asignaturas totales del curso
+	evaluaciones_realizadas: entero, número de evaluaciones realizadas
+Administrativa:
+	matricula_activa: booleano, 1 sí, 0 no
+	oferta_educativa: entero, 1 -> ESO; 2 -> Bachillerato; 3 -> FP Básica; 4 -> FP Grado Medio.
+Comportamiento temporal:
+	días_sin_actividad: entero, días sin registro educativo
+	inasistencias_consecutivas: entero, faltas seguidas
+Demograficas:
+	grado_urbanización: entero, 1 -> Rural; 2 -> Semiurbano; 3 -> Urbano
+Socio-educativas:
+	distancia_escuela: entero, distancia en KM con la escuela
+	acceso_internet: booleano (1 sí, 0 no)
+	nivel_socioeconomico: entero, asociado a la clase social, 1-> Alta; 2->Media Alta; 3-> Media; 4->Media Baja; 5-> Baja Alta; 6-> Baja Baja
+	apoyo_familiar: booleano (1 sí, 0 no)
+	trabaja: booleano (1 sí, 0 no)
+
+
+
+
+
+
+Reglas de etiquetado (ground truth)
+Nuestra variable ‘y’ será abandono, booleano (1 sí, 0 no).
+Regla principal (abandono confirmado)
+Un estudiante etiquetado como:
+Y  = 1 (abandono) si se cumple cualquiera
+R1 – Abandono administrativo
+matricula_activa == 0
+R2 – Inactividad crítica
+dias_sin_actividad >= 60
+AND asistencia_pct < 20
+R3 – Desvinculación académica severa
+evaluaciones_realizadas == 0
+AND asistencia_pct < 30 
+AND (nota_media is null or nota_media < 3/10)
+
+Regla de estabilidad
+Y = 0 (estudiante estable) si:
+matricula_activa == 1
+AND asistencia_pct >= 75
+And evaluaciones_realizadas > 0
+
+Zona intermedia (no abandono confirmado)
+Estos casos se etiquetan como 0 por defecto o pueden excluirse:
+	asistencia entre 30% y 75%
+	bajo rendimiento sin desconexión total
+
+Casos límite (Edge cases)
+Caso 1 – Baja asistencia pero matrícula activa
+	asistencia 40%
+	evaluaciones realizadas
+	solución: NO es abandono (riesgo Sí, abandono No)
+Caso 2 – Sin datos de notas
+	nota_media = sin información
+	usar solo asistencia + actividad
+Caso 3 – Abandono tardío (mitad del curso)
+	si dias_sin_actividad >=60 al final del periodo  abandono
+Consideración entre abandono y riesgo
+	Ground truth (y)
+Confirma abandono real.
+	RiskIndex
+Estima vulnerabilidad futura.
+Esto evita:
+	contaminación del target, 
+	confusión entre clasificación y scoring, 
+	y problemas de interpretación.
+
+Gestión de valores faltantes
+Definición de una política de missing values
+
+	Nota_media, gestión del caso de null.
+	Para variables numéricas, mediana por oferta educativa
+	Para variables binarias, considerar una categoría aparte.
+	Si faltasen:
+	Asistencia
+	Matrícula
+	Actividad
+Entonces el registro debe excluirse o marcarse como inválido.
+Indice de riesgo socioeconómico
+La idea es construir un índice continuo de riesgo entre 0 y 1, donde:
+	0 = riesgo mínimo 
+	1 = riesgo máximo 
+El objetivo no es confirmar abandono (eso ya lo hacen las reglas de etiquetado), sino estimar la probabilidad o vulnerabilidad de que el estudiante termine abandonando.
+Principio del índice de riesgo de abandono
+El índice debe:
+	Penalizar: 
+	baja asistencia 
+	bajo rendimiento 
+	desconexión académica 
+	vulnerabilidad socioeconómica 
+	Incrementar riesgo cuando: 
+	trabaja 
+	no tiene internet 
+	no tiene apoyo familiar 
+	vive lejos
+Normalización de variables.
+Es necesario gestionar este problema
+No todas las variables están:
+	en la misma dirección semántica 
+	en la misma escala 
+	ni con la misma sensibilidad estadística 
+Algunas variables representan:
+	riesgo creciente 
+	otras protección 
+	otras categorías ordinales 
+Necesitamos estandarizar:
+	dirección del riesgo, para mantener dirección coherente.
+	Rango, en escala [0,1]
+	impacto relativo
+
+Primero transformamos todas las variables a escala común [0,1].
+Variables académicas
+Riesgo por asistencia
+R_asistencia=1-(asistencia_pct)/100
+
+R_asistencia=1-(asistencia_pct)/100
+Ejemplo:
+	asistencia = 90% → riesgo = 0.10 
+	asistencia = 20% → riesgo = 0.80 
+
+Riesgo por notas
+Asumiendo notas sobre 10:
+R_notas=1-(promedio_notas)/10
+
+R_notas=1-(promedio_notas)/10
+Ejemplo:
+	nota = 8 → riesgo = 0.20 
+	nota = 2 → riesgo = 0.80 
+
+Riesgo por materias suspendidas
+R_suspensas=(materias_suspensas)/(numero_materias_curso)
+
+R_suspensas=(materias_suspensas)/(numero_materias_curso)
+
+Riesgo por inactividad
+Limitar a máximo 60 días:
+R_inactividad=min⁡((dias_sin_actividad)/30ⓜ,1)
+
+R_inactividad=min⁡((dias_sin_actividad)/30ⓜ,1)
+Al utilizar un umbral de 30, se detecta el riesgo antes del abandono confirmado.
+
+Variables socioeconómicas
+Riesgo por distancia
+Distancia relativa según grado de urbanización
+Zona	Distancia crítica
+Urbana	10 km
+Semiurbana	20 km
+Rural	40 km
+
+R_distancia=min⁡((distancia_escuela)/(umbral_zona)ⓜ,1)
+Zona	Umbral
+Urbana	10
+Semiurbana	20
+Rural	40
+
+
+Riesgo por acceso a internet
+R_internet={■(1&"si no tiene internet" @0&"si tiene internet" )┤
+
+
+Riesgo por apoyo familiar
+R_familia={■(1&"si no tiene apoyo" @0&"si tiene apoyo" )┤
+
+
+Riesgo por trabajo
+R_trabajo={■(1&"si trabaja" @0&"si no trabaja" )┤
+
+Transformación del nivel socioeconómico
+La escala:
+Valor	Nivel
+1	Alta
+2	Media Alta
+3	Media
+4	Media Baja
+5	Baja Alta
+6	Baja Baja
+Conviene invertirla y normalizarla:
+R_socioeco=(nivel_socioeconomico-1)/5
+
+R_socioeco=(nivel_socioeconomico-1)/5
+Resultado:
+NSE	Riesgo
+1	0.0
+2	0.2
+3	0.4
+4	0.6
+5	0.8
+6	1.0
+	
+Transformación oferta educativa
+Valor	Nivel
+1	ESO
+2	Bachillerato
+3	FP Básica
+4	FP Medio
+R_ofertaeduca=(oferta_educativa-1)/3
+Pero no representan magnitudes continuas ni tampoco nos da una relación lineal entre categorías, por tanto, pasaremos a utilizar exclusivamente el riesgo histórico.
+
+Oferta	Riesgo histórico
+ESO	0.3
+Bachillerato	0.2
+FP Básica	0.8
+FP Medio	0.5
+Por tanto, la oferta académica
+R_oferta={■(0.3&"ESO" @0.2&"Bachillerato" @0.8&"FP B" "a"  ˊ"sica" @0.5&"FP Medio" )┤
+
+
+
+Grado urbanización
+Valor	Nivel
+1	Rural
+2	Semiurbano
+3	Urbano
+	
+Aquí la variable no se utilizará como riesgo independiente, pues aplicar un riesgo histórico introduciría un sesgo. Por tanto, se utilizará como variable contextual, donde distancia critica depende del entorno
+
+Zona	Distancia crítica
+Urbana	10 km
+Semiurbana	20 km
+Rural	40 km
+Esto sí tiene lógica causal.
+
+Ponderación de las variables
+AGRUPACION	VARIABLE	PESO
+Asistencia	asistencia_pct	0,22
+Inactividad	dias_sin_actividad	0,18
+Notas	nota_media	0,12
+Suspensas	materias_suspensas	0,08
+NSE	nivel_socioeconomico	0,12
+Internet	acceso_internet	0,05
+Familia	apoyo_familiar	0,08
+Trabajo	trabaja	0,07
+Distancia	distancia_escuela	0,05
+
+
+Estructura final del índice
+
+Fórmula recomendada
+RiskIndex=0.22R_asistencia+0.18R_inactividad+0.12R_notas+0.08R_suspensas+0.12R_socioeco+0.08R_familia+0.07R_trabajo+0.05R_internet+0.05R_distancia+0.03R_oferta
+
+La suma es correcta:
+1.00
+
+Clasificación operativa recomendada
+Muy importante para aplicar a modo de intervención educativa.
+Índice	Nivel
+0.00 – 0.29	Bajo
+0.30 – 0.49	Medio
+0.50 – 0.69	Alto
+≥ 0.70	Crítico
+Esto facilita:
+	dashboards, 
+	alertas, 
+	derivaciones, 
+	priorización institucional.

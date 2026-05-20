@@ -21,7 +21,7 @@ El objetivo del sistema es:
 3. Permitir intervención educativa temprana.
 ---
 
-## Principios de Diseño
+# Principios de Diseño
 
 La arquitectura se basa en los siguientes principios:
 
@@ -36,7 +36,7 @@ La arquitectura se basa en los siguientes principios:
 | Interpretabilidad | Riesgo explicable para entornos educativos |
 ---
 
-## Estructura General del Proyecto
+# Estructura General del Proyecto
 ```text
 proyecto_abandono_escolar/
 │
@@ -76,7 +76,7 @@ proyecto_abandono_escolar/
 └── arquitectura.md
 ```
 
-## Arquitectura Funcional
+# Arquitectura Funcional
 ```text
 Dataset
    │
@@ -114,8 +114,8 @@ Visualización
 Resultados
 ```
 ---
-## Definición Operativa del Sistema
-### Objetivos del Sistema
+# Definición Operativa del Sistema
+## Objetivos del Sistema
 
 El sistema distingue dos conceptos fundamentales:
 
@@ -129,7 +129,7 @@ Esto evita:
 - mezcla entre scoring y clasificación,
 - sesgos de interpretación.
 
-### Ground Truth — Etiqueta Objetivo
+## Ground Truth — Etiqueta Objetivo
 Variable objetivo
 abandono_escolar
 
@@ -140,26 +140,34 @@ Valores:
 |1 | Abandono confirmado |
 |0 | No abandono |
 
-### Reglas Operativas de Etiquetado
-#### R1 — Abandono administrativo
+## Reglas Operativas de Etiquetado
+### R1 — Abandono administrativo
+```text
 matricula_activa == 0
+```
 #### R2 — Inactividad crítica
+```text
 dias_sin_actividad >= 60
 AND asistencia_pct < 20
+```
 #### R3 — Desvinculación académica severa
+```text
 evaluaciones_realizadas == 0
 AND asistencia_pct < 30
 AND (
     nota_media is null
     OR nota_media < 3
 )
-#### Regla de estabilidad
+```
+### Regla de estabilidad
+```text
 matricula_activa == 1
 AND asistencia_pct >= 75
 AND evaluaciones_realizadas > 0
+```
 ---
 
-## Arquitectura Modular
+# Arquitectura Modular
 ```text
 src/
 │
@@ -172,9 +180,9 @@ src/
 ├── utils.py
 └── main.py
 ```
-### Descripción de los Módulos
-#### 1. preprocessing.py
-Responsabilidad
+# Descripción de los Módulos
+## 1. preprocessing.py
+### Responsabilidad
 
 Gestionar:
 
@@ -184,7 +192,7 @@ tipado,
 imputación,
 validación de rangos,
 preparación ML.
-Funcionalidades principales
+### Funcionalidades principales
 Carga de datos
 cargar_dataset()
 Validación estructural
@@ -242,8 +250,8 @@ encoding,
 escalado,
 transformación automática.
 
-#### 2. feature_engineering.py
-Responsabilidad
+## 2. feature_engineering.py
+### Responsabilidad
 
 Centralizar toda la lógica matemática del modelo operativo.
 
@@ -288,10 +296,12 @@ Riesgo por distancia
 
 Depende del entorno:
 
-Zona	Umbral
-Urbana	10 km
-Semiurbana	20 km
-Rural	40 km
+|Zona	| Umbral |
+|---|---|
+|Urbana | 10 km |
+|Semiurbana	| 20 km |
+|Rural |	40 km |
+
 R_distancia = min(
     distancia_escuela / umbral_zona,
     1
@@ -304,8 +314,8 @@ Riesgo por oferta educativa
 |FP Básica | 0.8 |
 |FP Medio |	0.5 |
 
-#### 3. RiskIndex
-Fórmula final
+## 3. RiskIndex
+### Fórmula final
 RiskIndex =
     0.22 * R_asistencia +
     0.18 * R_inactividad +
@@ -317,9 +327,11 @@ RiskIndex =
     0.05 * R_internet +
     0.05 * R_distancia +
     0.03 * R_oferta
+
 Normalización final
 RiskIndex = min(RiskIndex, 1)
-Clasificación Operativa
+
+### Clasificación Operativa
 |Índice | Nivel |
 |---|---|
 |0.00 – 0.29 |	Bajo |
@@ -327,8 +339,8 @@ Clasificación Operativa
 |0.50 – 0.69 |	Alto |
 |≥ 0.70	| Crítico |
 
-#### 4. model.py
-Responsabilidad
+## 4. model.py
+### Responsabilidad
 
 Entrenamiento y evaluación de modelos ML.
 
@@ -339,7 +351,7 @@ Evolución futura
 - XGBoost
 - LightGBM
 - CatBoost
-Funcionalidades
+### Funcionalidades
 Entrenamiento
 entrenar_modelo()
 Predicción
@@ -349,8 +361,8 @@ predecir_probabilidades()
 Persistencia
 guardar_modelo()
 
-#### 5. evaluation.py
-Responsabilidad
+## 5. evaluation.py
+### Responsabilidad
 
 Evaluación estadística y operativa.
 
@@ -375,8 +387,8 @@ no detectar un abandono,
 que
 generar falsas alertas.
 
-#### 6. visualization.py
-Responsabilidad
+## 6. visualization.py
+### Responsabilidad
 
 Visualización analítica y operativa.
 
@@ -390,8 +402,8 @@ graficar_distribucion_riesgo()
 Segmentación de niveles
 graficar_segmentacion_riesgo()
 
-#### 7. config.py
-Responsabilidad
+## 7. config.py
+### Responsabilidad
 
 Centralizar configuración global.
 
@@ -404,8 +416,8 @@ PESOS_RISK_INDEX = {
     ...
 }
 
-#### 8. utils.py
-Responsabilidad
+## 8. utils.py
+### Responsabilidad
 
 Funciones auxiliares reutilizables.
 
@@ -414,12 +426,12 @@ guardar_csv()
 guardar_json()
 cargar_configuracion()
 
-#### 9. main.py
-Responsabilidad
+## 9. main.py
+### Responsabilidad
 
 Orquestación completa del sistema.
 
-Flujo Operativo Completo
+### Flujo Operativo Completo
 ```text
 Inicio
    │
@@ -468,7 +480,7 @@ Persistencia outputs
    ▼
 Fin
 ```
-Buenas Prácticas Aplicadas
+### Buenas Prácticas Aplicadas
 | Práctica | Beneficio |
 |---|---|
 | Separación de responsabilidades |	Código mantenible |

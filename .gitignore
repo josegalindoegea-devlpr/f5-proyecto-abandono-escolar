@@ -75,7 +75,8 @@ Desktop.ini
 *.temp
 *.bak
 *.swp
-*~
+# Archivos temporales de office
+~$*
 
 # VSCode temp runner
 tempCodeRunnerFile.py

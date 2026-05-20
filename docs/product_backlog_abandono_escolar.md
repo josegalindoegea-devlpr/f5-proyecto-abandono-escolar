@@ -227,6 +227,7 @@ Transformar variables educativas en indicadores homogéneos y escalables.
 | PB-010 | Clasificación operativa del riesgo | Etiquetado Bajo/Medio/Alto/Crítico | Media | Pendiente |
 
 ## PB-008 — Generación de variables de riesgo
+
 ### Descripción
 
 Implementar cálculo normalizado de riesgos.

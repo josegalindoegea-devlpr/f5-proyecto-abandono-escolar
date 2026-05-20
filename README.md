@@ -76,28 +76,43 @@ Las principales variables utilizadas son:
 ```text
 proyecto_abandono_escolar/
 │
-├─ data/
-│   └─ estudiantes.csv
-|
+├── data/
+│   └── estudiantes.csv
+│
 ├─datasets/
 │   └─abandono.csv
 │
 ├── notebooks/
-│   └── analisis.ipynb
+│   └── analisis_exploratorio.ipynb
 │
 ├── src/
-│   ├─preprocessing.py
+│   ├── preprocessing.py
+│   ├── risk_index.py
+│   ├── labeling.py
 │   ├── model.py
-│  └── visualization.py
+│   ├── evaluation.py
+│   ├── visualization.py
+│   ├── config.py
+│   ├── utils.py
+│   └── main.py
 │
 ├── outputs/
-│   ├── matriz_confusion.png
-│   └── reporte_modelo.txt
+│   ├── reportes/
+│   ├── modelos/
+│   ├── metricas/
+│   └── visualizaciones/
 │
-├─docs/
-│
-├─ prompts/
+├── docs/
+│   ├── arquitectura_abandono_escolar.md
+│   ├── modelo_operativo_abandono_escolar.md
+│   ├── metricas_modelo_abandono_escolar.md
+│   ├── decisiones_tecnicas_abandono_escolar.md
+│   ├── historias_usuario_abandono_escolar_v2.md
+│   ├── comparativa_evolutiva_proyecto_abandono_escolar.md
+│   └── product_backlog_abandono_escolar.md
 │
 ├── requirements.txt
-└── README.md
+├── README.md
+└── .gitignore
+```
 ---

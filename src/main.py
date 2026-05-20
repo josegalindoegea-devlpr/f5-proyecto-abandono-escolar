@@ -1,74 +1,133 @@
 # ==========================================
-# main.py
-# Ejecución principal del proyecto
+# Proyecto: Abandono escolar
+# modulo: main.py
+# Funcionalidad: Ejecución principal del proyecto
+# Version: 2.0
 # ==========================================
 
-from preprocessing import (
-    cargar_dataset,
-    preparar_datos,
-    dividir_datos,
-    escalar_datos
+# -------------------------------------------------------------------------
+# IMPORTS Generales
+# -------------------------------------------------------------------------
+from datetime import datetime
+
+# -------------------------------------------------------------------------
+# IMPORTS del Proyecto
+# -------------------------------------------------------------------------
+
+from utils.logger import (
+    configurar_logger,
+    log_info,
+    log_error
 )
 
-from model import (
-    entrenar_modelo,
-    realizar_predicciones,
-    evaluar_modelo
+from ingestion.loader import cargar_dataset
+
+from preprocessing.pipeline import preparar_datos
+from preprocessing.pipeline import dividir_datos
+from preprocessing.pipeline import escalar_datos
+
+from modeling.train import entrenar_modelo
+from modeling.predict import predecir
+
+from evaluation.metrics import calcular_metricas
+
+from visualization.plots import graficar_matriz_confusion
+
+from pipelines.training_pipeline import (
+    ejecutar_pipeline_entrenamiento
 )
 
-from visualization import (
-    graficar_matriz_confusion,
-    graficar_importancia_variables
+from pipelines.inference_pipeline import (
+    ejecutar_pipeline_inferencia
 )
 
-# ==========================================
-# CARGA Y PREPROCESAMIENTO
-# ==========================================
+# -------------------------------------------------------------------------
+# Configuracion del log
+# -------------------------------------------------------------------------
+logger = configurar_logger()
 
-df = cargar_dataset("../data/estudiantes.csv")
+# -------------------------------------------------------------------------
+# Pipelines preparadas
+# -------------------------------------------------------------------------
+def pipeline_entrenamiento():
+    """    
+    pipeline de entrenamiento
+    """
+    try:
 
-X, y = preparar_datos(df)
 
-X_train, X_test, y_train, y_test = dividir_datos(X, y)
+        log_info(
+            "Inicio sistema abandono escolar - Pipeline de Entrenamiento"
+        )
 
-X_train, X_test, scaler = escalar_datos(
-    X_train,
-    X_test
-)
+        # Ejecutar pipeline
+        ejecutar_pipeline_entrenamiento()
 
-# ==========================================
-# MODELO
-# ==========================================
+        log_info(
+            "Pipeline ejecutado correctamente"
+        )
 
-modelo = entrenar_modelo(X_train, y_train)
+    except Exception as e:
 
-y_pred = realizar_predicciones(modelo, X_test)
+        log_error(
+            f"Error ejecución en main.py: {str(e)}"
+        )
 
-accuracy, reporte = evaluar_modelo(
-    y_test,
-    y_pred
-)
+def pipeline_inferencia():
+    """    
+    pipeline de inferencia
+    """
+    try:
 
-# ==========================================
-# RESULTADOS
-# ==========================================
+        log_info(
+            "Inicio sistema abandono escolar - Pipeline de Inferencia"
+        )
 
-print(f"Accuracy: {accuracy:.2f}")
+        # Ejecutar pipeline
+        ejecutar_pipeline_inferencia()
 
-print("\nReporte:\n")
+        log_info(
+            "Pipeline ejecutado correctamente"
+        )
 
-print(reporte)
+    except Exception as e:
 
-# ==========================================
-# VISUALIZACIONES
-# ==========================================
+        log_error(
+            f"Error ejecución en main.py: {str(e)}"
+        )
 
-graficar_matriz_confusion(
-    y_test,
-    y_pred
-)
+# -------------------------------------------------------------------------
+# MAIN
+# -------------------------------------------------------------------------        
+def main():
 
-graficar_importancia_variables(
-    modelo,
-    X.columns
-)
+    print("=" * 60)
+    tempo_ini = datetime.now()
+    tempo_ini_str =tempo_ini.now().strftime("%Y-%m-%d %H:%M:%S")
+    print("SISTEMA PREDICCION ABANDONO ESCOLAR")
+    print(f"[{tempo_ini_str}] INICIO.")
+    print("=" * 60)
+
+    ahora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f"[{ahora}] Pipeline de ENTRENAMIENTO")
+    pipeline_entrenamiento()
+
+    ahora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f"[{ahora}] Pipeline de INFERENCIA")
+    pipeline_inferencia()
+
+    print("=" * 60)
+    tempo_fin = datetime.now()
+    tempo_fin_str = tempo_fin.strftime("%Y-%m-%d %H:%M:%S")
+    print(f"[{tempo_fin_str}] FINALIZACION.")
+    segundos_totales = (tempo_fin - tempo_ini).total_seconds()
+    print(f"[{segundos_totales:.2f} segundos] DURACION.")
+    print("=" * 60)
+
+# -------------------------------------------------------------------------
+# ENTRY POINT
+# -------------------------------------------------------------------------
+
+if __name__ == "__main__":
+
+    main()

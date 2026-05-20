@@ -1,0 +1,19 @@
+variable,tipo,descripcion
+asistencia_pct,float,Porcentaje asistencia
+nota_media,float,Promedio académico
+materias_suspensas,int,Asignaturas suspendidas
+numero_materias_curso,int,Total asignaturas
+evaluaciones_realizadas,int,Evaluaciones realizadas
+partes_disciplinarios,int,Amonestaciones
+matricula_activa,bool,Matrícula activa
+oferta_educativa,int,Oferta educativa
+repetidor_curso_actual,bool,Alumno repetidor
+dias_sin_actividad,int,Días sin actividad
+inasistencias_consecutivas,int,Faltas consecutivas
+grado_urbanizacion,int,Urbanización
+distancia_escuela,float,Distancia escuela
+acceso_internet,bool,Acceso internet
+nivel_socioeconomico,int,Nivel socioeconómico
+apoyo_familiar,bool,Apoyo familiar
+trabaja,bool,Alumno trabaja
+abandono_escolar,bool,Variable objetivo

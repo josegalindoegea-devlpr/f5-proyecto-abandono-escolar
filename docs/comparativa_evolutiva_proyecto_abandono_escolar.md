@@ -38,26 +38,26 @@ Estado actual
 
 El sistema ahora tiene dos capas diferenciadas:
 
-### A. Clasificación binaria
+### A. Clasificación binaria
 abandono_escolar ∈ {0,1}
 
 Basada en:
 
-reglas operativas,
-actividad académica,
-asistencia,
-matrícula,
-desconexión.
+- reglas operativas,
+- actividad académica,
+- asistencia,
+- matrícula,
+- desconexión.
 
 ### B. Sistema continuo de riesgo
 RiskIndex ∈ [0,1]
 
 Permite:
 
-detección temprana,
-priorización institucional,
-segmentación operativa,
-intervención preventiva.
+- detección temprana,
+- priorización institucional,
+- segmentación operativa,
+- intervención preventiva.
 Mejora conseguida
 
 Separación correcta entre:
@@ -69,17 +69,18 @@ Separación correcta entre:
 
 Esto evita:
 
-contaminación del target,
-leakage conceptual,
-problemas de interpretación.
+- contaminación del target,
+- leakage conceptual,
+- problemas de interpretación.
+
 ## 3.2 Variables y Modelo de Negocio
 Requisito original
 
 Variables generales:
 
-distancia,
-internet,
-nivel socioeconómico.
+- distancia,
+- internet,
+- nivel socioeconómico.
 Estado actual
 
 Se ha construido un modelo multidimensional:
@@ -96,9 +97,9 @@ Mejora conseguida
 
 El sistema ahora refleja:
 
-causalidad educativa,
-comportamiento longitudinal,
-vulnerabilidad estructural.
+- causalidad educativa,
+- comportamiento longitudinal,
+- vulnerabilidad estructural.
 
 Ya no es únicamente un clasificador tabular básico.
 
@@ -111,17 +112,17 @@ Estado actual
 
 Se implementó una definición operativa basada en reglas:
 
-R1 → matrícula inactiva
-R2 → inactividad crítica
-R3 → desvinculación académica severa
+** R1 → matrícula inactiva
+** R2 → inactividad crítica
+** R3 → desvinculación académica severa
 Mejora conseguida
 
 Ahora existe:
 
-trazabilidad,
-explicabilidad,
-reproducibilidad,
-coherencia institucional.
+- trazabilidad,
+- explicabilidad,
+- reproducibilidad,
+- coherencia institucional.
 Punto de mejora pendiente
 
 Actualmente las reglas son deterministas.
@@ -135,26 +136,26 @@ Estado actual
 
 Se implementó:
 
-normalización semántica,
-homogenización de dirección del riesgo,
-escalado [0,1],
-fórmulas causales,
-variables derivadas.
+- normalización semántica,
+- homogenización de dirección del riesgo,
+- escalado [0,1],
+- fórmulas causales,
+- variables derivadas.
 
 Ejemplos:
 
-R_asistencia
-R_notas
-R_inactividad
-R_socioeco
-R_distancia
+- R_asistencia
+- R_notas
+- R_inactividad
+- R_socioeco
+- R_distancia
 Mejora conseguida
 
 El modelo ahora es:
 
-interpretable,
-explicable,
-matemáticamente consistente.
+- interpretable,
+- explicable,
+- matemáticamente consistente.
 Punto crítico detectado
 
 Actualmente coexistirán:
@@ -166,9 +167,9 @@ Actualmente coexistirán:
 
 Esto puede generar:
 
-multicolinealidad,
-redundancia,
-leakage semántico.
+- multicolinealidad,
+- redundancia,
+- leakage semántico.
 Recomendación
 
 Separar explícitamente:
@@ -194,19 +195,23 @@ main.py
 
 Con roadmap hacia:
 
-validation/
 config/
-inference/
+evaluation/
+ingestion/
+preprocesing/
+ingestion/
+labeling/
+modeling/
 pipelines/
-monitoring/
+persistence/
 Mejora conseguida
 
 Se alcanzó:
 
-separación de responsabilidades,
-mantenibilidad,
-escalabilidad,
-facilidad de testing.
+- separación de responsabilidades,
+- mantenibilidad,
+- escalabilidad,
+- facilidad de testing.
 
 ## 3.6 Preprocessing
 Requisito original
@@ -217,30 +222,15 @@ Estado actual
 
 El preprocessing ya contempla:
 
-validación estructural,
-validación de rangos,
-imputación,
-gestión de missing values,
-generación de variables de riesgo,
-preparación ML.
+- validación estructural,
+- validación de rangos,
+- imputación,
+- gestión de missing values,
+- generación de variables de riesgo,
+- preparación ML.
 Mejora conseguida
 
 El pipeline ya está cercano a un enfoque de producción.
-
-Problemas detectados
-A. Naming inconsistente
-
-Actualmente aparecen simultáneamente:
-
-abandono
-abandono_escolar
-
-Y también:
-
-R_disciplinario
-R_vulnerabilidad
-R_final_disciplinario
-Recomendación
 
 ## 3.7 Modelo ML
 Requisito original
@@ -253,11 +243,12 @@ Sigue alineado correctamente.
 
 La elección es adecuada porque:
 
-Ventaja	Valor
-Interpretabilidad	Alta
-Explicabilidad	Alta
-Coste computacional	Bajo
-Base lineal	Buena para MVP
+| Ventaja |	Valor |
+|---|---|
+| Interpretabilidad	| Alta |
+| Explicabilidad	| Alta |
+| Coste computacional	| Bajo |
+| Base lineal	| Buena para MVP |
 
 ## 3.8 Métricas
 Requisito original
@@ -268,9 +259,9 @@ Estado actual
 
 Ya existe:
 
-accuracy,
-classification_report,
-matriz de confusión.
+- accuracy,
+- classification_report,
+- matriz de confusión.
 
 ## 3.9 Product Backlog / Agile
 Requisito original
@@ -281,9 +272,9 @@ Estado actual
 
 Ya existe implícitamente mediante:
 
-ponderaciones,
-variables de riesgo,
-roadmap técnico.
+- ponderaciones,
+- variables de riesgo,
+- roadmap técnico.
 
 ## 3.10 Interpretabilidad Institucional
 Requisito original
@@ -294,10 +285,10 @@ Estado actual
 
 El sistema ya permite:
 
-clasificación,
-scoring,
-priorización,
-dashboards futuros.
+- clasificación,
+- scoring,
+- priorización,
+- dashboards futuros.
 Evolución muy importante
 
 El proyecto pasó de:
@@ -308,38 +299,38 @@ a:
 
 sistema de apoyo a decisiones educativas
 
-## 4. Bloques Técnicos Faltantes
+## 4. Bloques Técnicos Incorporados
 ### 4.1 Persistencia
 
-Falta:
+A traves de model_registry utilizaremos:
 
 joblib.dump()
 joblib.load()
 
-## 4.2 Logging
+### 4.2 Logging
 
-Falta:
+Pequeño y discreto
 
 logging
 
 profesional.
 
-## 4.3 Configuración Centralizada
+### 4.3 Configuración Centralizada
 
-Falta:
+Centro único de configuración
 
 config.py
 
 Para:
 
-pesos,
-umbrales,
-rutas,
-parámetros.
+- pesos,
+- umbrales,
+- rutas,
+- parámetros.
 
-## 4.4 Trazabilidad
+### 4.4 Trazabilidad
 
-Falta versionado de:
+Primer versionado de:
 
 datasets,
 modelos,
@@ -348,11 +339,12 @@ pesos.
 
 ## 4.5 Testing
 
-No existen:
+En elaboración:
 
 tests/
 
-## 4.6 Validación estadística
+## 5. Bloques Técnicos Faltantes
+## 5.1 Validación estadística
 
 Falta:
 
@@ -361,18 +353,18 @@ calibración,
 análisis de drift,
 estabilidad temporal.
 
-# 5. Riesgos Técnicos Detectados
+# 6. Riesgos Técnicos Detectados
 | Riesgo |	Impacto |
 |---|---|
 | Leakage entre reglas y features |	Alto |
 | Ausencia de pipeline sklearn completo	| Medio |
 | Accuracy como métrica principal |	Alto |
-| Variables duplicadas semánticamente |	Alto |
-| Naming inconsistente	| Medio |
+| Variables duplicadas semánticamente |	Bajo |
+| Naming inconsistente	| Bajo |
 | Sin control de balanceo	| Alto |
 | Sin persistencia	| Medio |
 
-# 6. Evaluación Global del Proyecto
+# 7. Evaluación Global del Proyecto
 | Área | Estado |
 |---|---|
 | Diseño conceptual	| Muy sólido |
@@ -383,7 +375,7 @@ estabilidad temporal.
 | Escalabilidad	| Buena |
 | Interpretabilidad	| Muy Alta |
 
-# 7. Conclusión
+# 8. Conclusión
 
 El proyecto ha evolucionado correctamente desde un ejercicio académico simple hacia un sistema operativo de predicción de abandono escolar con orientación institucional y capacidad futura de producción.
 
@@ -397,9 +389,9 @@ la coherencia conceptual entre:
 
 Los siguientes saltos evolutivos prioritarios deberían centrarse en:
 
-consolidar preprocessing profesional,
-evitar leakage y redundancias,
-mejorar evaluación estadística,
-implementar pipelines sklearn completos,
-añadir persistencia y trazabilidad,
-preparar despliegue e inferencia.
+- consolidar preprocessing profesional,
+- evitar leakage y redundancias,
+- mejorar evaluación estadística,
+- implementar pipelines sklearn completos,
+- añadir persistencia y trazabilidad,
+- preparar despliegue e inferencia.

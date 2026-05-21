@@ -20,15 +20,15 @@ La evolución ha afectado principalmente a:
 | Objetivo ML |	Clasificación básica abandono/no abandono	| Sistema operativo de riesgo + clasificación	| Alto |
 | Modelo	| Logistic Regression	| Logistic Regression modular y escalable	| Medio|
 | Variables	| Variables simples	| Modelo semántico completo normalizado	| Alto|
-| Ingeniería de datos | Definida	| Pipeline estructurado	| Alto|
+| Ingeniería de datos | No considerada	| Pipeline estructurado	| Alto|
 | Arquitectura | Script simple	| Arquitectura modular profesional	| Alto|
 | Etiquetado | Manual/simple	| Ground truth formalizado	| Muy Alto|
-| Gestión missing values | Definida	| Política operativa definida	| Alto|
+| Gestión missing values | No considerada	| Política operativa definida	| Alto|
 | Métricas | Accuracy | Roadmap hacia métricas avanzadas	| Medio|
 | Visualización	| Matriz de confusión	| Visualización modular	| Medio|
 | Interpretabilidad	| No considerada	| Riesgo interpretable por componentes	| Alto|
 | Riesgo institucional | No contemplado	| Índice continuo RiskIndex	| Muy Alto|
-| Escalabilidad	| En estudio | Roadmap MLOps/API | Alto|
+| Escalabilidad	| No contemplado | Roadmap MLOps/API | Alto|
 
 # 3. Evolución Funcional del Proyecto
 ## 3.1 Objetivo del Sistema

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduRetención 360 - Sistema de Alerta Temprana y Retención Escolar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .accent-gradient { background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%); }
+        .feature-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <header class="hero-gradient text-white">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold flex items-center gap-2">
+                <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332 0.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332 0.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332 0.477-4.5 1.253"></path></svg>
+                EduRetención<span class="text-blue-400">360</span>
+            </div>
+            <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-semibold text-sm transition duration-300">Solicitar Demo</a>
+        </nav>
+
+        <div class="container mx-auto px-6 py-24 md:py-32 text-center">
+            <span class="inline-block accent-gradient px-4 py-1 rounded-full text-xs font-semibold mb-4 tracking-wide">SOLUCIÓN INTEGRAL PARA INSTITUTOS</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">Detén la Fuga Silenciosa de Matrículas Antes de que Sea Tarde.</h1>
+            <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-10">Anticipa la deserción escolar hasta 45 días antes. Nuestra IA identifica patrones de riesgo y activa protocolos de rescate personalizados para salvar a tus estudiantes y tu presupuesto.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#solucion" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition duration-300 flex items-center justify-center gap-2">
+                    Descubre la Solución
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </a>
+                <a href="#contacto" class="bg-slate-700 hover:bg-slate-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition duration-300">Agendar Consultoría Estratégica</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-5">
+                    <span class="text-blue-600 font-semibold tracking-wide">EL COSTO DE LA CEGUERA INSTITUCIONAL</span>
+                    <h2 class="text-4xl font-bold mt-2 mb-6">¿Sabes realmente por qué se van tus alumnos?</h2>
+                    <p class="text-lg text-slate-700 mb-6">El abandono no ocurre de la noche a la mañana; es un proceso lento e invisible. Cuando te enteras, ya es demasiado tarde. Cada estudiante que se va representa una pérdida del 100% del Valor de su Ciclo de Vida (LTV) proyectado.</p>
+                    <div class="bg-slate-100 p-6 rounded-2xl border border-slate-200">
+                        <p class="text-sm text-slate-600 italic">"Perder un estudiante en el primer año no solo afecta tus números de este semestre, impacta tu presupuesto y reputación por años."</p>
+                    </div>
+                </div>
+                <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-red-50 p-8 rounded-3xl border border-red-100 flex flex-col gap-3">
+                        <span class="text-red-500 text-5xl font-extrabold">5X</span>
+                        <h4 class="text-xl font-semibold text-red-950">Más Caro Captar</h4>
+                        <p class="text-red-800 text-sm">Captar un alumno nuevo es 5 veces más costoso que retener a uno actual. ¿Tu presupuesto aguanta esa ineficiencia?</p>
+                    </div>
+                    <div class="bg-red-50 p-8 rounded-3xl border border-red-100 flex flex-col gap-3">
+                        <span class="text-red-500 text-5xl font-extrabold">70%</span>
+                        <h4 class="text-xl font-semibold text-red-950">En el Primer Tercio</h4>
+                        <p class="text-red-800 text-sm">La mayoría de las deserciones ocurren en los primeros meses. Sin detección temprana, no tienes oportunidad.</p>
+                    </div>
+                    <div class="bg-red-50 p-8 rounded-3xl border border-red-100 flex flex-col gap-3">
+                        <svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <h4 class="text-xl font-semibold text-red-950">Efecto Dominó</h4>
+                        <p class="text-red-800 text-sm">La deserción masiva baja tus rankings, desmotiva a tus docentes y desestabiliza tu operación.</p>
+                    </div>
+                    <div class="bg-red-50 p-8 rounded-3xl border border-red-100 flex flex-col gap-3">
+                        <svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                        <h4 class="text-xl font-semibold text-red-950">Pérdida Reputacional</h4>
+                        <p class="text-red-800 text-sm">Altas tasas de abandono envían un mensaje claro: "Aquí no cuidamos a nuestros estudiantes".</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solucion" class="py-24 bg-slate-100 border-y border-slate-200">
+        <div class="container mx-auto px-6 text-center mb-16">
+            <span class="text-blue-600 font-semibold tracking-wide">NUESTRA PROPUESTA DE VALOR</span>
+            <h2 class="text-4xl md:text-5xl font-bold mt-2 max-w-3xl mx-auto">Más que Software: Un Escudo Predictivo para tu Instituto.</h2>
+            <p class="text-lg text-slate-700 max-w-2xl mx-auto mt-6">EduRetención360 combina IA avanzada con intervención humana automatizada para crear un Sistema de Alerta Temprana (SAT) infalible.</p>
+        </div>
+
+        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 feature-card shadow-sm">
+                <div class="bg-blue-100 text-blue-600 w-14 h-14 rounded-full flex items-center justify-center mb-6 border border-blue-200">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-semibold mb-4">IA Predictiva Multifactorial</h3>
+                <p class="text-slate-700 text-sm leading-relaxed mb-5">Analizamos en tiempo real asistencia, calificaciones e interacción en tu LMS. Nuestro algoritmo detecta micro-patrones de riesgo mucho antes de que sean evidentes.</p>
+                <ul class="text-xs text-slate-500 space-y-2">
+                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Predicción hasta 45 días antes.</li>
+                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Identificación de las 3 causas clave (Socioeconómica, Académica, Emocional).</li>
+                </ul>
+            </div>
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 feature-card shadow-sm">
+                <div class="bg-blue-100 text-blue-600 w-14 h-14 rounded-full flex items-center justify-center mb-6 border border-blue-200">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                </div>
+                <h3 class="text-2xl font-semibold mb-4">Alertas y Protocolos de Rescate</h3>
+                <p class="text-slate-700 text-sm leading-relaxed mb-5">Al detectarse riesgo, el sistema genera una alerta instantánea y sugiere un "Plan de Rescate" diseñado por psicólogos educativos para que tus tutores actúen de inmediato.</p>
+                <ul class="text-xs text-slate-500 space-y-2">
+                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Intervención psicoeducativa automatizada.</li>
+                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Acompañamiento personalizado y escalable.</li>
+                </ul>
+            </div>
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 feature-card shadow-sm">
+                <div class="bg-blue-100 text-blue-600 w-14 h-14 rounded-full flex items-center justify-center mb-6 border border-blue-200">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path></svg>
+                    <svg class="w-8 h-8 -ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-semibold mb-4">Panel de Control Estratégico</h3>
+                <p class="text-slate-700 text-sm leading-relaxed mb-5">Visibilidad total del estado de tu instituto. Monitoriza KPIs de retención, efectividad de tutores y ROI en tiempo real desde un dashboard intuitivo y centralizado.</p>
+                <ul class="text-xs text-slate-500 space-y-2">
+                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Métricas de éxito institucionales claras.</li>
+                    <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Toma de decisiones basada en datos verificables.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-semibold tracking-wide">TU CAMINO A LA RETENCIÓN TOTAL</span>
+                <h2 class="text-4xl font-bold mt-2">Implementación Sin Fricción en 3 Fases</h2>
+                <p class="text-lg text-slate-700 max-w-2xl mx-auto mt-6">Diseñado para integrarse rápidamente en tu operación actual sin interrumpir el ciclo académico.</p>
+            </div>
+
+            <div class="relative wrap overflow-hidden p-10 h-full">
+                <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%"></div>
+                <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 accent-gradient shadow-xl w-12 h-12 rounded-full border-4 border-white text-white font-bold justify-center">1</div>
+                    <div class="order-1 bg-slate-100 rounded-3xl shadow-xl w-5/12 px-8 py-6 border border-slate-200">
+                        <h4 class="mb-3 font-semibold text-xl text-slate-950">Integración No Invasiva (Días 1-15)</h4>
+                        <p class="text-sm leading-snug text-slate-700 text-opacity-100">Conectamos de forma segura EduRetención360 con tus sistemas actuales (CRM, LMS, control de asistencia) vía API.</p>
+                    </div>
+                </div>
+                <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 accent-gradient shadow-xl w-12 h-12 rounded-full border-4 border-white text-white font-bold justify-center">2</div>
+                    <div class="order-1 bg-slate-100 rounded-3xl shadow-xl w-5/12 px-8 py-6 border border-slate-200">
+                        <h4 class="mb-3 font-semibold text-xl text-slate-950">Calibración Inteligente (Días 16-30)</h4>
+                        <p class="text-sm leading-snug text-slate-700 text-opacity-100">Nuestra IA analiza tus datos históricos para identificar los perfiles de riesgo específicos y únicos de tu instituto.</p>
+                    </div>
+                </div>
+                <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 accent-gradient shadow-xl w-12 h-12 rounded-full border-4 border-white text-white font-bold justify-center">3</div>
+                    <div class="order-1 bg-slate-100 rounded-3xl shadow-xl w-5/12 px-8 py-6 border border-slate-200">
+                        <h4 class="mb-3 font-semibold text-xl text-slate-950">Activación y Rescate (Día 31+)</h4>
+                        <p class="text-sm leading-snug text-slate-700 text-opacity-100">El panel se activa. Los tutores reciben alertas y planes de acción personalizados para iniciar el acompañamiento inmediato.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 hero-gradient text-white">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">EduRetención360 No es un Gasto, es tu Mejor Inversión.</h2>
+                <p class="text-xl text-slate-300 mb-10">Convierte la retención en un motor de ingresos. Al salvar estudiantes, no solo proteges tu presupuesto, aseguras el futuro de tu instituto y el de ellos.</p>
+                <div class="bg-blue-600/20 p-8 rounded-2xl border border-blue-500/30">
+                    <p class="text-lg font-semibold text-blue-100 flex items-center gap-3">
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Plantea este escenario:
+                    </p>
+                    <p class="text-slate-200 mt-3">Reducir la deserción en apenas un <span class="font-bold text-white">15%</span> paga la totalidad de la plataforma en el primer año. A partir de ahí, todo es rentabilidad y crecimiento institucional.</p>
+                </div>
+            </div>
+            <div id="contacto" class="bg-white p-10 rounded-3xl shadow-2xl border border-slate-100 text-slate-950">
+                <h3 class="text-3xl font-semibold mb-2">Solicita una Demo</h3>
+                <p class="text-slate-600 mb-8 text-sm">Déjanos tus datos y un especialista te contactará para mostrarte cómo EduRetención360 puede transformar tu instituto.</p>
+                <form class="space-y-5">
+                    <div>
+                        <label class="text-xs font-semibold text-slate-700 block mb-1">Nombre Completo</label>
+                        <input type="text" class="w-full border border-slate-300 px-4 py-3 rounded-lg text-sm focus:ring-2 focus:ring-blue-200 focus:border-blue-400 outline-none" placeholder="Ej. Juan Pérez">
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-slate-700 block mb-1">Correo Institucional</label>
+                        <input type="email" class="w-full border border-slate-300 px-4 py-3 rounded-lg text-sm focus:ring-2 focus:ring-blue-200 focus:border-blue-400 outline-none" placeholder="juan.perez@instituto.edu">
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-slate-700 block mb-1">Nombre del Instituto</label>
+                        <input type="text" class="w-full border border-slate-300 px-4 py-3 rounded-lg text-sm focus:ring-2 focus:ring-blue-200 focus:border-blue-400 outline-none" placeholder="Ej. Instituto Superior de Tecnología">
+                    </div>
+                    <button type="submit" class="w-full accent-gradient text-white py-4 rounded-xl font-bold transition duration-300 transform hover:scale-[1.02]">Enviar Solicitud y Agendar Demo</button>
+                    <p class="text-center text-xs text-slate-500 mt-4">Al enviar, aceptas nuestra política de privacidad.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-slate-950 text-slate-500 border-t border-slate-800 text-sm">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 EduRetención360. Todos los derechos reservados.</p>
+            <p class="mt-1">Líderes en Tecnología para la Retención y el Éxito Estudiantil.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
